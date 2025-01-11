@@ -1,0 +1,126 @@
+
+<nav>
+  <!-- <ul> -->
+    <!-- <li><a routerLink="/">home</a></li> -->
+    <a routerLink="/employee" routerLinkActive="active"></a>
+    <a routerLink="/admin" routerLinkActive="active"></a>
+    <a routerLink="/hr" routerLinkActive="active"></a>
+
+
+
+  <!-- </ul> -->
+</nav> 
+<!-- <router-outlet></router-outlet> -->
+<!-- <nav> -->
+  <!-- <ul> -->
+    <!-- <li><a routerLink="/">home</a></li> -->
+    <!-- <a routerLink="/employee" routerLinkActive="active"></a> -->
+    <!-- <a routerLink="/admin" routerLinkActive="active"></a> -->
+
+  <!-- </ul> -->
+<!-- </nav>  -->
+<router-outlet></router-outlet>
+<div *ngIf="login">  
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+    *{
+      font-family: "Urbanist", serif;
+      font-weight: 500;
+    }
+    .container-fluid{
+      background: rgb(255,255,255);
+      background: linear-gradient(43deg, rgba(255,255,255,1) 0%, rgba(157,232,1,1) 100%);
+    }
+  
+    .loginForm{
+      background-color: #5b8809;
+  background-image: linear-gradient(45deg, #5b8809 0%, #efff09 100%);
+  
+    }
+  
+    .myHeader{
+      color: #4d4c4e;
+    }
+  
+    .myCard{
+      box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  }
+  </style>
+  <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center bg-gradient">
+    <div class="row w-100 justify-content-center">
+      
+      <!-- Card Wrapper -->
+      <div class="col-md-6">
+        <div class="card rounded-lg myCard">
+          <div class="row g-0">
+            
+            <!-- Left Part: Login Form -->
+            <div style="height: 500px;" class="col-lg-6 col-md-12 col-sm-12 p-5 loginForm">
+              <h2 class="text-center mt-5 mb-4 myHeader">Login</h2>
+              <form (ngSubmit)="onSubmit()">
+                <div class="mb-4">
+                  <label for="email" class="form-label text-light">Email</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    class="form-control shadow-sm" 
+                    placeholder="Enter your email" 
+                    [(ngModel)]="emp.emailId"
+                    name="emailId"
+                    required
+                  />
+                </div>
+                <div class="mb-4">
+                  <label for="password" class="form-label text-light">Password</label>
+                  <input 
+                    type="password" 
+                    id="password" 
+                    class="form-control shadow-sm" 
+                    placeholder="Enter your password" 
+                    [(ngModel)]="emp.password"
+                    name="password"
+                    required
+                  />
+                </div>
+                <div class="mb-4" style="width: 50%;">
+                  <label for="role" class="form-label">Login as</label>
+                  <!-- <select name="role" class="form-control" id=""  [(ngModel)]="emp.role">
+                      <option value="">HR</option>
+                      <option value="">Admin</option>
+                      <option value="">Employee</option>
+                  </select> -->
+                  <select name="role" class="form-control" [(ngModel)]="emp.role">
+                    <option value="Admin">Admin</option>
+                    <option value="Employee">Employee</option>
+                    <option value="Hr">Hr</option>
+                 </select>
+
+                </div>
+                <button 
+                  type="submit" 
+                  class="btn btn-outline-light w-100 py-2 shadow-sm hover:opacity-80"
+                >
+                  Login
+                </button>
+              </form>
+            </div>
+  
+            <!-- Right Part: Image -->
+            <div class="col-lg-6 col-md-12 col-sm-12">
+              <!-- <picture>
+                <source src="./assets/images/cropped-Fbs-Logo-Png-01-1-192x192.webp" class="img-fluid h-100 object-cover" type="image/webp">
+              </picture> -->
+              <img src="../assets/images/firstbit-banner-3.png" alt="Login Image" class="img-fluid h-100 object-cover" />
+            </div>
+  
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  {{message}}
+</div>
+  
+  <!-- Add a gradient background style (you can place this in your CSS file or <style> tag) -->

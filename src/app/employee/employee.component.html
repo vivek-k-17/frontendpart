@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.3.2 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        .card {
+            min-height: 180px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .profile-card {
+            /* background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%); */
+
+
+            background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
+
+            /* background-color: #85FFBD;
+               background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%); */
+
+
+            /* background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%); */
+
+            /* background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+            min-height: 380px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .badge {
+            font-size: 0.875rem;
+            padding: 5px 10px;
+            border-radius: 12px;
+        }
+
+        .profile-badge {
+            font-size: 1rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .profile-card .card-body {
+            padding: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <!-- place navbar here -->
+    </header>
+    <main>
+        <div class="container">
+            <div class="background p-3">
+                <div class="d-flex justify-content-between align-items-center mb-5">
+                    <h2><i class="fas fa-clipboard-list"></i> Employee Dashboard</h2>
+                    <!-- Add Employee Button -->
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEmployeeModal">
+                        <i class="fas fa-user-plus"></i> Add Leave
+                    </button>
+                </div>
+                <div class="row mb-3">
+                    <!-- Profile Card -->
+                    <div class="col-lg-3">
+                        <div class="card profile-card shadow-sm p-3 mb-4 bg-white rounded">
+                            <!-- Card Header -->
+                            <div class="d-flex justify-content-between align-items-center">
+                                <!-- Dropdown Menu -->
+                                <div class="dropdown">
+                                    <button class="btn btn-link text-muted p-0" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="fas fa-edit me-2"></i>Edit
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item text-danger" href="#">
+                                                <i class="fas fa-trash me-2"></i>Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Profile Section -->
+                            <div class="text-center mt-3">
+                                <img src="profile.png" alt="Profile Picture" class="rounded-circle border"
+                                    style="width: 100px; height: 100px; object-fit: cover;">
+                                <h5 class="mb-2" >{{emp.firstName}}firstName {{emp.lastName}}lastName</h5>
+                                <span class="badge bg-light text-secondary profile-badge">deptName</span>
+                            </div>
+
+                            <!-- Statistics Section -->
+                            <div class="mt-3 text-center">
+                                <div class="d-flex justify-content-between px-3">
+                                    <div>
+                                        <small class="text-muted">Total Leaves</small>
+                                        <p class="mb-0"><b>20</b></p>
+                                    </div>
+                                    <div>
+                                        <small class="text-muted">Leaves Taken</small>
+                                        <p class="mb-0"><b>8</b></p>
+                                    </div>
+                                    <!-- <div>
+                                        <small class="text-muted">Leaves Remaining</small>
+                                        <p class="mb-0"><b>5</b></p>
+                                    </div> -->
+                                </div>
+
+                                <!-- Progress Bar -->
+                                <!-- <div class="mt-3">
+                                    <small class="text-muted">Productivity: <span
+                                            class="text-primary fw-bold">65%</span></small>
+                                    <div class="progress mt-1" style="height: 6px;">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 65%;"
+                                            aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Leave Cards (First Row) -->
+                    <div class="col-lg-9">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            <img src="leave-type-image.jpg" class="img-fluid rounded-start"
+                                                alt="Leave Type">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h3 class="card-title">Medical Leave</h3>
+                                                <p class="card-text">
+                                                    <span class="badge bg-primary">Leaves Remaining: 10</span>
+                                                    <span class="badge bg-secondary">Total Leaves: 15</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            <img src="leave-type-image.jpg" class="img-fluid rounded-start"
+                                                alt="Leave Type">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h3 class="card-title">Wedding Leave</h3>
+                                                <p class="card-text">
+                                                    <span class="badge bg-primary">Leaves Remaining: 10</span>
+                                                    <span class="badge bg-secondary">Total Leaves: 15</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            <img src="leave-type-image.jpg" class="img-fluid rounded-start"
+                                                alt="Leave Type">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h3 class="card-title">Death Leave</h3>
+                                                <p class="card-text">
+                                                    <span class="badge bg-primary">Leaves Remaining: 10</span>
+                                                    <span class="badge bg-secondary">Total Leaves: 15</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Leave Cards (Second Row) -->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            <img src="leave-type-image.jpg" class="img-fluid rounded-start"
+                                                alt="Leave Type">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h3 class="card-title">Leave Type</h3>
+                                                <p class="card-text">
+                                                    <span class="badge bg-primary">Leaves Remaining: 10</span>
+                                                    <span class="badge bg-secondary">Total Leaves: 15</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            <img src="leave-type-image.jpg" class="img-fluid rounded-start"
+                                                alt="Leave Type">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h3 class="card-title">Leave Type</h3>
+                                                <p class="card-text">
+                                                    <span class="badge bg-primary">Leaves Remaining: 10</span>
+                                                    <span class="badge bg-secondary">Total Leaves: 15</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            <img src="leave-type-image.jpg" class="img-fluid rounded-start"
+                                                alt="Leave Type">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h3 class="card-title">Leave Type</h3>
+                                                <p class="card-text">
+                                                    <span class="badge bg-primary">Leaves Remaining: 10</span>
+                                                    <span class="badge bg-secondary">Total Leaves: 15</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="addEmployeeModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addEmployeeModalLabel"><i class="fas fa-user-plus"></i> Add
+                                    Leave
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form (ngSubmit)="applyLeave()">
+                                    <div class="mb-3">
+                                        <label for="employeeName" class="form-label">Start Date</label>
+                                        <input [(ngModel)]="l1.startDate" type="date" name="startDate" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="employeeName" class="form-label">End Date</label>
+                                        <input [(ngModel)]="l1.endDate" type="date" name="endDate" class="form-control">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="gender" class="form-label">Leave Type <i
+                                                class="fa-solid fa-caret-down"></i></label>
+                                        <select [(ngModel)]="l1.leaveType" name="leaveType" class="form-control" id="leaveType">
+
+                                            <option value=""> Sick </option>
+                                            <option value=""> Death </option>
+                                            <option value=""> Wedding </option>
+                                            <option value=""> Etc</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="reason" class="form-label">Reason</label>
+                                        <textarea [(ngModel)]="l1.reason" name="reason" class="form-control" id=""></textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary"><i class="fas fa-save"></i> Apply for Leave</button>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                            <!-- <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary"><i class="fas fa-save"></i> Apply for Leave</button>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--note end of the profile section -->
+
+        <!--note =================== START OF THE NUMBER OF LEAVES ========================  -->
+        <div class="container">
+
+        </div>
+    </main>
+    <footer>
+        <!-- place footer here -->
+    </footer>
+</body>
+
+</html>
